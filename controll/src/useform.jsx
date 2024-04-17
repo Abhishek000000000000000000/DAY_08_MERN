@@ -1,9 +1,13 @@
 import React, { useState, useRef } from 'react';
+import { useTheme } from './ThemeContext';
 
 const UserForm = () => {
   const [name, setName] = useState('');
   const emailRef = useRef(null);
   const [validationError, setValidationError] = useState('');
+
+    const { theme } = useTheme();
+  
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -23,7 +27,7 @@ const UserForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div style={{ background: theme.background, color: theme.text }}> 
         <label htmlFor="name">Name:</label>
         <input
           type="text"
